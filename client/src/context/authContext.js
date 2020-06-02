@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const AuthContext = React.createContext()
-export const AuthConsumer = AuthContext.Consumer;
 
 class AuthProvider extends Component {
   state = { user: null }
@@ -56,4 +55,7 @@ class AuthProvider extends Component {
   }
 }
 
+const AuthConsumer = AuthContext.Consumer;
+
+export { AuthConsumer, AuthContext }
 export default AuthProvider;
