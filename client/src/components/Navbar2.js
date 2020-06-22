@@ -7,7 +7,7 @@ import { ShopContext } from '../context/shopContext';
 class Navbar extends Component {
 
   rightNavItems = () => {
-    const { auth: { user, handleLogout }, location } = this.props
+    const { auth: { user, handleLogout } } = this.props
     if (user) {
       return (
         <Menu.Menu position='right'>
@@ -24,14 +24,12 @@ class Navbar extends Component {
             <Menu.Item
               id='login'
               name='login'
-              active={location.pathname === '/login'}
             />
           </Link>
           <Link to='/register'>
             <Menu.Item
               id='register'
               name='register'
-              active={location.pathname === '/register'}
             />
           </Link>
         </Menu.Menu>
@@ -46,7 +44,6 @@ class Navbar extends Component {
             <Menu.Item
               name='home'
               id='home'
-              active={this.props.location.pathname === '/'}
             />
           </Link>
             { this.rightNavItems() }

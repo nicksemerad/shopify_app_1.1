@@ -7,14 +7,16 @@ import { AuthContext } from '../context/authContext';
 const Navbar = () => {
 
   const { openCart } = useContext(ShopContext);
-  const { authenticated } = useContext(AuthContext);
+  const { auth, user, handleLogout } = useContext(AuthContext);
 
   return(
-    <Container d='flex' flexDir='row' p='2rem' justify='space-between'>
-      <Link to='/'>Shop</Link>
-      <Anchor onClick={() => openCart()}>Cart</Anchor>
-      <Link to='/login'>Login</Link>
-    </Container>
+    <div style={{marginLeft: '10rem', marginRight: '10rem'}}>
+      <Container d='flex' flexDir='row' p='1rem' justify='space-between' margin='.5rem'>
+        <Link to='/'>Shop</Link>
+        <Anchor onClick={() => openCart()}>Cart</Anchor>
+        <Link to='/login'>Login</Link>
+      </Container>
+    </div>
   )
 }
 

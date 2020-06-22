@@ -17,12 +17,26 @@ class ShopProvider extends Component {
   }
 
   componentDidMount() {
-    this.createCheckout();
+
+    if (localStorage.checkout_id) {
+      this.fetchCheckout(localStorage.checkout_id)
+    } else {
+      this.createCheckout();
+    }
   }
 
   createCheckout = async () => {
     const checkout = await client.checkout.create()
+    localStorage.setItem('checkout_id', checkout.id);
     this.setState({ checkout: checkout });
+  }
+
+  fetchCheckout = async (checkoutId) => {
+    client.checkout.fetch(checkoutId)
+    .then( checkout => {
+      this.setState({checkout: checkout});
+    })
+    .catch(err => console.log(err));
   }
 
   addItemToCheckout = async ( variantId, quantity ) => {
